@@ -1,3 +1,181 @@
 @tailwind base;
+
+.flex-align {
+  @apply flex shrink-0 items-center;
+}
+
+.link {
+  @apply flex-align gap-3 rounded-lg px-4 py-2 duration-100 hover:bg-gray-300;
+}
+
+.link > span {
+  @apply font-medium;
+}
+
+.link > svg {
+  @apply h-6 w-6 opacity-50;
+}
+
+.link-sm {
+  @apply gap-1 rounded-lg px-2 py-1 text-sm duration-100 hover:bg-gray-300;
+}
+
+.link-sm > span {
+  @apply text-sm font-medium;
+}
+
+.link-sm > svg {
+  @apply h-3 w-3 opacity-50;
+}
+
+.form-field {
+  @apply mt-4 flex w-max flex-col gap-1;
+}
+
+.form-field > div {
+  @apply flex items-center justify-between;
+}
+
+.form-field > h3 {
+  @apply text-sm font-medium;
+}
+
+.form-field > div > h3 {
+  @apply text-sm font-medium;
+}
+
+.form-field > div > span {
+  @apply text-xs font-normal text-gray-500;
+}
+
+.form-field > input:not([type="checkbox"]) {
+  @apply input max-w-max;
+}
+
+.form-field > input[type="checkbox"] {
+  @apply text-white accent-blue-600;
+}
+
+/* .input {
+  @apply rounded-lg bg-main-medium px-4 py-2 text-sm font-normal enabled:focus:bg-main-border enabled:focus:outline-none enabled:focus:ring-2 enabled:focus:ring-main-light aria-disabled:opacity-50;
+} */
+
+.focusable-base {
+  @apply ring-offset-0 focus:outline-none focus:ring-2 aria-disabled:pointer-events-none aria-disabled:opacity-50;
+}
+
+.focusable {
+  @apply focusable-base focus:border-blue-800;
+}
+
+.focusable-error {
+  @apply focusable-base focus:border-red-800 focus:ring-red-300;
+}
+
+.focusable-warning {
+  @apply focusable-base focus:border-amber-800 focus:ring-amber-300;
+}
+
+.input-base {
+  @apply h-8 rounded-md border border-gray-300 bg-gray-100 text-sm font-normal text-gray-900;
+}
+
+.input {
+  @apply focusable input-base w-full px-3 py-1 shadow-inner;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23818181' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  -webkit-print-color-adjust: exact;
+  text-transform: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+}
+
+.select {
+  @apply focusable input-base py-1 pl-3 pr-8;
+}
+
+.checkbox {
+  @apply input-base h-8 px-2.5 py-1.5;
+}
+
+.checkbox > input {
+  @apply text-white accent-blue-600;
+}
+
+.btn-base {
+  @apply inline-flex shrink-0 items-center justify-center rounded-md px-4 py-2 text-center text-sm font-semibold leading-none;
+}
+
+.btn-base-sm {
+  @apply inline-flex shrink-0 items-center justify-center rounded-md px-2 py-1 text-center text-xs font-semibold leading-none;
+}
+
+.btn {
+  @apply btn-base focusable border text-gray-700 hover:bg-gray-50 aria-disabled:hover:bg-inherit;
+}
+
+.btn-sm {
+  @apply btn-base-sm focusable border text-gray-700 hover:bg-gray-50 aria-disabled:hover:bg-inherit;
+}
+
+.btn-main {
+  @apply btn-base focusable border border-black bg-black text-white hover:bg-gray-900 aria-disabled:hover:bg-black;
+}
+
+.btn-main-sm {
+  @apply btn-base-sm focusable border border-black bg-black text-white hover:bg-gray-900 aria-disabled:hover:bg-black;
+}
+
+.btn-primary {
+  @apply btn-base focusable border text-blue-600 duration-75 hover:border-blue-600 aria-disabled:hover:bg-inherit;
+}
+
+.btn-primary-sm {
+  @apply btn-base-sm focusable border text-blue-600 duration-75 hover:border-blue-600 aria-disabled:hover:bg-inherit;
+}
+
+.btn-error {
+  @apply btn-base focusable-error border text-red-600 duration-75 hover:border-red-600 aria-disabled:hover:bg-inherit;
+}
+
+.btn-error-sm {
+  @apply btn-base-sm focusable-error border text-red-600 duration-75 hover:border-red-600 aria-disabled:hover:bg-inherit;
+}
+
+.btn-warning {
+  @apply btn-base focusable-warning border text-amber-600 duration-75 hover:border-amber-600 aria-disabled:hover:bg-inherit;
+}
+
+.btn-warning-sm {
+  @apply btn-base-sm focusable-warning border text-amber-600 duration-75 hover:border-amber-600 aria-disabled:hover:bg-inherit;
+}
+
+.card {
+  @apply rounded-lg border border-gray-300 bg-gray-100 p-2 shadow;
+}
+
+/* .horisonal-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-200;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-main-medium;
+} */
+
 @tailwind components;
 @tailwind utilities;
