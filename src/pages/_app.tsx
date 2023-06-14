@@ -18,7 +18,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <title>PsyVector</title>
         <meta name="description" content="Network Monitor" />
         <link rel="icon" href="favicon.ico" />
-        <meta
+        {/* <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
@@ -35,7 +35,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#2B5797" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#000000" /> */}
       </Head>
       <style jsx global>
         {`

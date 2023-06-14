@@ -23,7 +23,9 @@ export const env = createEnv({
     // Add `.min(1) on ID and SECRET if you want to make sure they're not empty
     GOOGLE_CLIENT_ID: z.string(),
     GOOGLE_CLIENT_SECRET: z.string(),
-    LANCE_DB_URL: z.string(),
+    PINECONE_API_KEY: z.string(),
+    OPENAI_API_KEY: z.string(),
+    DATABASE_INTERFACE_BEARER_TOKEN: z.string(),
   },
 
   /**
@@ -46,7 +48,10 @@ export const env = createEnv({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
-    LANCE_DB_URL: process.env.LANCE_DB_URL,
+    PINECONE_API_KEY: process.env.PINECONE_API_KEY,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    DATABASE_INTERFACE_BEARER_TOKEN:
+      process.env.DATABASE_INTERFACE_BEARER_TOKEN,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.

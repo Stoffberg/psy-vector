@@ -14,7 +14,8 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 import { getServerAuthSession } from "~/server/auth";
 import { prisma } from "~/server/db";
-import { getLanceClient } from "../lanceClient";
+import { openai } from "~/server/openai";
+import VectorDB from "../vectordb";
 
 /**
  * 1. CONTEXT
@@ -38,11 +39,12 @@ type CreateContextOptions = {
  *
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
-const createInnerTRPCContext = async (opts: CreateContextOptions) => {
+const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
     session: opts.session,
     prisma,
-    lanceClient: await getLanceClient(),
+    openai,
+    vectordb: new VectorDB(),
   };
 };
 

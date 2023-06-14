@@ -30,7 +30,7 @@ const Sidebar = () => {
           {conversations?.map((conversation) => (
             <Link
               className="link"
-              href={`/conversation/${conversation.id}`}
+              href={`/${conversation.id}`}
               key={conversation.id}
             >
               <span>{conversation.id}</span>

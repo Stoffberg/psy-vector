@@ -1,6 +1,4 @@
 import { type NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import SidebarLayout from "~/layouts/SidebarLayout";
@@ -8,35 +6,52 @@ import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
   const router = useRouter();
-  const askQuestion = api.conversation.askQuestion.useMutation();
+  const conversationId = router.query.id as string;
 
   const [question, setQuestion] = useState("");
+
+  const { data: conversationEntries } =
+    api.conversation.getConversationEntries.useQuery({ conversationId });
+  const askQuestion = api.conversation.askQuestion.useMutation();
 
   const utils = api.useContext();
   const handleAskQuestion = async () => {
     const result = await askQuestion.mutateAsync({
       question,
+      conversationId,
     });
 
+    // do a optimistic update
     utils.conversation.getConversationEntries.setData(
-      { conversationId: result.conversationId },
+      { conversationId },
       (prev) => {
         if (!prev) return [result];
         return [...prev, result];
       }
     );
 
-    await router.push(`/${result.conversationId}`);
+    // do a pessimistic update
+    await utils.conversation.getConversationEntries.invalidate({
+      conversationId,
+    });
   };
 
   return (
     <SidebarLayout>
-      <div className="flex h-full flex-col">
-        <section
-          id="content-section"
-          className="flex grow items-center justify-center text-2xl font-bold"
-        >
-          Morning, what would you like to do today?
+      <div className="flex h-full flex-col justify-end">
+        <section id="content-section" className="relative h-full">
+          <div className="absolute inset-0 space-y-4 overflow-y-auto">
+            {conversationEntries?.map((entry) => (
+              <div key={entry.id} className="space-y-4">
+                <h1 className="card">
+                  <b>User:</b> {entry.question}
+                </h1>
+                <p className="card">
+                  <b>AI:</b> {entry.answer}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
         <div className="flex gap-4">
           <input
